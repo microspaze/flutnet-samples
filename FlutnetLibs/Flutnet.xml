@@ -1,0 +1,287 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Flutnet</name>
+    </assembly>
+    <members>
+        <member name="T:Flutnet.FlutnetBridgeMode">
+            <summary>
+            Specifies how platform code and Flutter code communicate.
+            </summary>
+        </member>
+        <member name="F:Flutnet.FlutnetBridgeMode.PlatformChannel">
+            <summary>
+            Communication uses standard Flutter platform channel.
+            </summary>
+        </member>
+        <member name="F:Flutnet.FlutnetBridgeMode.WebSocket">
+            <summary>
+            Communication uses WebSocket protocol.
+            </summary>
+        </member>
+        <member name="T:Flutnet.FlutnetRuntime">
+            <summary>
+            Runtime where you can store your PlatformService.
+            </summary>
+        </member>
+        <member name="M:Flutnet.FlutnetRuntime.Init(System.String)">
+            <summary>
+            Initializes the Flutnet environment.
+            </summary>
+        </member>
+        <member name="M:Flutnet.FlutnetRuntime.RegisterPlatformService(System.Object,System.String)">
+            <summary>
+            Creates a named class registration of a platform service instance.
+            </summary>
+            <param name="instance">Instance to register</param>
+            <param name="name">Name of registration</param>
+        </member>
+        <member name="M:Flutnet.FlutnetRuntime.RegisterStaticPlatformService(System.Type,System.String)">
+            <summary>
+            Creates a named class registration of a static platform service.
+            </summary>
+            <param name="type">Type to register</param>
+            <param name="name">Name of registration</param>
+        </member>
+        <member name="M:Flutnet.FlutnetRuntime.UnregisterPlatformService(System.String)">
+            <summary>
+            Removes a named class registration of a platform service.
+            </summary>
+            <param name="name">Name of registration</param>
+            <returns>true if the registration is successfully found and removed; otherwise, false.</returns>
+        </member>
+        <member name="E:Flutnet.FlutnetRuntime.OnPlatformEvent">
+            <summary>
+            Occurs when a .NET event that must be propagated to Flutter is raised.
+            </summary>
+        </member>
+        <member name="M:Flutnet.FlutnetRuntime.PropagatePlatformEvent(System.String,System.String,System.Object,System.EventArgs)">
+            <summary>
+            Called when a .NET event that must be propagated to Flutter is raised.
+            This method propagates the event through <see cref="E:Flutnet.FlutnetRuntime.OnPlatformEvent"/>
+            so that <see cref="T:Flutnet.FlutnetBridge"/> can subscribe and send data to Flutter.
+            </summary>
+        </member>
+        <member name="T:Flutnet.FlutnetWebSocketService">
+             \private
+        </member>
+        <member name="M:Flutnet.FlutterInterop.ToMethodChannelResult(System.Int32)">
+            <summary>
+            Converts a .NET object to a valid <see cref="T:Java.Lang.Object"/>
+            that can be sent to Flutter as a successful result of
+            a <see cref="T:Flutnet.Interop.Plugin.Common.MethodChannel"/> method invoke.
+            </summary>
+        </member>
+        <member name="M:Flutnet.FlutterInterop.ToMethodChannelResult(Flutnet.Data.FlutnetMessage)">
+            <summary>
+            Converts a .NET object to a valid <see cref="T:Java.Lang.Object"/>
+            that can be sent to Flutter as a successful result of
+            a <see cref="T:Flutnet.Interop.Plugin.Common.MethodChannel"/> method invoke.
+            </summary>
+        </member>
+        <member name="M:Flutnet.FlutterInterop.ToMethodChannelResult(Flutnet.Data.FlutnetEventInfo)">
+            <summary>
+            Converts a .NET object to a valid <see cref="T:Java.Lang.Object"/>
+            that can be sent to Flutter as a successful result of
+            a <see cref="T:Flutnet.Interop.Plugin.Common.MethodChannel"/> method invoke.
+            </summary>
+        </member>
+        <member name="M:Flutnet.PlatformOperationRunner.Run(Flutnet.FlutnetRuntime.OperationInfo,System.Object[])">
+            <summary>
+            Invoke a platform operation with the specified arguments.
+            </summary>
+        </member>
+        <member name="M:Flutnet.Utilities.ExceptionExtensions.GetStackTraceCleared(System.Exception)">
+            <summary>
+            Returns a particular representation of the stack trace for this exception
+            where methods defined inside Flutnet class library are excluded.
+            See: https://stackoverflow.com/questions/2973343/how-to-hide-the-current-method-from-exception-stack-trace-in-net
+            </summary>
+        </member>
+        <member name="M:Flutnet.Utilities.ExceptionExtensions.ToStringCleared(System.Exception)">
+            <summary>
+            Return all the exception info.
+            </summary>
+            <param name="exception"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flutnet.Utilities.ExpressionTools.GenerateCallExpression(System.Object,System.Reflection.MethodBase,System.Linq.Expressions.ParameterExpression@)">
+            <summary>
+            Generate expression call
+            </summary>
+            <param name="instance">If instance is NULL the method is treated as static.</param>
+            <param name="method"></param>
+            <param name="allParameters"></param>
+        </member>
+        <member name="M:Flutnet.Utilities.SignatureTools.GetCSharpSignature(System.Reflection.MethodInfo)">
+            <summary>
+            Returns the signature of the specified method according to C# language specification.
+            The signature of a method consists of the name of the method, the number of type parameters and the type and kind
+            (value, reference, or output) of each of its formal parameters, considered in the order left to right. [...]
+            The signature of a method specifically does not include the return type,
+            the params modifier that may be specified for the right-most parameter,
+            nor the optional type parameter constraints.
+            For further reading see: https://stackoverflow.com/a/33712878
+            </summary>
+        </member>
+        <member name="M:Flutnet.Utilities.SignatureTools.BuildGenericSignature(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Takes an <see cref="T:System.Collections.Generic.IEnumerable`1"/> and creates a generic type signature (&lt;string, string&gt; for example)
+            </summary>
+            <param name="genericArgumentTypes"></param>
+            <returns>Generic type signature like &lt;Type, ...&gt;</returns>
+        </member>
+        <member name="M:Flutnet.Utilities.SignatureTools.GetSignature(System.Type)">
+            <summary>
+            Get a fully qualified signature for <paramref name="type"/>
+            </summary>
+            <param name="type">Type. May be generic or <see cref="T:System.Nullable`1"/></param>
+            <returns>Fully qualified signature</returns>
+        </member>
+        <member name="M:Flutnet.Utilities.TypeExtensions.IsNullable(System.Type,System.Type@)">
+            <summary>
+            Gets a valute indicating whether this type is a nullable type.
+            </summary>
+            <returns>True if nullable, otherwise False</returns>
+        </member>
+        <member name="M:Flutnet.Utilities.TypeExtensions.IsGeneric(System.Type)">
+            <summary>
+            Gets a valute indicating whether this type is a generic type.
+            </summary>
+            <returns>True if generic, otherwise False</returns>
+        </member>
+        <member name="M:Flutnet.Utilities.TypeExtensions.GetQualifiedTypeName(System.Type)">
+            <summary>
+            Gets the fully qualified type name of this type.
+            This will use any keywords in place of types where possible (string instead of System.String for example).
+            </summary>
+            <param name="type"></param>
+            <returns>The fully qualified name for this type</returns>
+        </member>
+        <member name="M:Flutnet.Utilities.TypeExtensions.RemoveGenericTypeNameArgumentCount(System.String)">
+            <summary>
+            Removes the `{argument-count} from the signature of a generic type.
+            </summary>
+            <param name="genericTypeSignature">Signature of a generic type</param>
+            <returns><paramref name="genericTypeSignature"/> without any argument count</returns>
+        </member>
+        <member name="T:Flutnet.FlutnetBridge">
+            <summary>
+            The Flutnet bridge allow the comunication between Xamarin and Flutter
+            allowing two different FlutnetBridgeMode to help you develop your app in debug mode.
+            </summary>
+        </member>
+        <member name="T:Flutnet.FlutnetBridge.MethodCallHandler">
+            <summary>
+            A handler for incoming method calls.
+            </summary>
+        </member>
+        <member name="M:Flutnet.FlutnetBridge.MethodCallHandler.OnMethodCall(Flutnet.Interop.Plugin.Common.MethodCall,Flutnet.Interop.Plugin.Common.MethodChannel.IResult)">
+            <summary>
+            <para>
+            Handles the specified method call received from Flutter.
+            </para>
+            <para>
+            Handler implementations must submit a result for all incoming calls, by making a single call
+            on the given <see cref="T:Flutnet.Interop.Plugin.Common.MethodChannel.IResult"/> callback.
+            Failure to do so will result in lingering Flutter result handlers.
+            The result may be submitted asynchronously.
+            Calls to unknown or unimplemented methods should be handled using <see cref="M:Flutnet.Interop.Plugin.Common.MethodChannel.IResult.NotImplemented"/>.
+            </para>
+            <para>
+            Any uncaught exception thrown by this method will be caught by the channel implementation and logged,
+            and an error result will be sent back to Flutter.
+            </para>
+            <para>
+            The handler is called on the platform thread (Android main thread).
+            For more details see <see href="https://github.com/flutter/engine/wiki/Threading-in-the-Flutter-Engine">Threading in the Flutter Engine</see>.
+            </para>
+            </summary>
+            <param name="call">A <see cref="T:Flutnet.Interop.Plugin.Common.MethodCall"/>.</param>
+            <param name="result">A <see cref="T:Flutnet.Interop.Plugin.Common.MethodChannel.IResult"/> used for submitting the result of the call.</param>
+        </member>
+        <member name="T:Flutnet.FlutnetBridge.StreamHandler">
+            <summary>
+            The platform side stream handler has two methods, <see cref="M:Flutnet.FlutnetBridge.StreamHandler.OnListen(Java.Lang.Object,Flutnet.Interop.Plugin.Common.EventChannel.IEventSink)"/> and <see cref="M:Flutnet.FlutnetBridge.StreamHandler.OnCancel(Java.Lang.Object)"/>, which are invoked
+            whenever the number of listeners to the Dart stream goes from zero to one and back, respectively.
+            This can happen multiple times. The stream handler implementation is supposed to start pouring events into the event sink
+            when the former is called, and stop when the latter is called.
+            In addition, it should pause when the ambient app component is not running.
+            </summary>
+            <seealso href="https://medium.com/flutter/flutter-platform-channels-ce7f540a104e"/>
+        </member>
+        <member name="M:Flutnet.FlutnetBridge.StreamHandler.OnCancel(Java.Lang.Object)">
+            <summary>
+            <para>
+            Handles a request to tear down the most recently created event stream.
+            </para>
+            <para>
+            Any uncaught exception thrown by this method will be caught by the channel implementation and logged.
+            An error result message will be sent back to Flutter.
+            </para>
+            <para>
+            The channel implementation may call this method with null arguments to separate a pair of two consecutive set up requests.
+            Such request pairs may occur during Flutter hot restart.
+            Any uncaught exception thrown in this situation will be logged without notifying Flutter.
+            </para>
+            <para>
+            Invoked when the last listener is deregistered from the Stream associated to this channel on the Flutter side.
+            </para>
+            </summary>
+            <param name="arguments">Stream configuration arguments, possibly null.</param>
+        </member>
+        <member name="M:Flutnet.FlutnetBridge.StreamHandler.OnListen(Java.Lang.Object,Flutnet.Interop.Plugin.Common.EventChannel.IEventSink)">
+            <summary>
+            <para>
+            Handles a request to tear down the most recently created event stream.
+            </para>
+            <para>
+            Any uncaught exception thrown by this method will be caught by the channel implementation and logged.
+            An error result message will be sent back to Flutter.
+            </para>
+            <para>
+            The channel implementation may call this method with null arguments to separate a pair of two consecutive set up requests.
+            Such request pairs may occur during Flutter hot restart.
+            Any uncaught exception thrown in this situation will be logged without notifying Flutter.
+            </para>
+            <para>
+            Invoked when the first listener is registered with the Stream associated to this channel on the Flutter side.
+            </para>
+            </summary>
+            <param name="arguments">Stream configuration arguments, possibly null.</param>
+            <param name="events">An <see cref="T:Flutnet.Interop.Plugin.Common.EventChannel.IEventSink"/> for emitting events to the Flutter receiver.</param>
+        </member>
+        <member name="M:Flutnet.FlutnetBridge.#ctor(Flutnet.Interop.Embedding.Engine.FlutterEngine,Android.Content.Context)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Flutnet.FlutnetBridge"/> class.
+            </summary>
+        </member>
+        <member name="M:Flutnet.FlutnetBridge.#ctor(Flutnet.Interop.Embedding.Engine.FlutterEngine,Android.Content.Context,Flutnet.FlutnetBridgeMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Flutnet.FlutnetBridge"/> class
+            specifying how platform code and Flutter code communicate.
+            </summary>
+        </member>
+        <member name="M:Flutnet.FlutnetBridge.Dispose">
+            <summary>
+            Releases all resources used by this object.
+            </summary>
+        </member>
+        <member name="P:Flutnet.FlutnetBridge.Mode">
+            <summary>
+            Specifies how platform code and Flutter code communicate.
+            </summary>
+        </member>
+        <member name="P:Flutnet.MainThread.IsMainThread">
+            <summary>
+            Returns <see langword="true"/> if code is running on the main (UI) thread.
+            </summary>
+        </member>
+        <member name="M:Flutnet.MainThread.BeginInvokeOnMainThread(System.Action)">
+            <summary>
+            Invokes an Action on the main (UI) thread.
+            </summary>
+            <param name="action">The Action to invoke</param>
+        </member>
+    </members>
+</doc>

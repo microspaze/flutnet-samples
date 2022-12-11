@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Flutnet.ServiceModel</name>
+    </assembly>
+    <members>
+        <member name="T:Flutnet.ServiceModel.PlatformDataAttribute">
+            <summary>
+            Denotes a class that can be used to exchange information with Flutter.
+            </summary>
+        </member>
+        <member name="T:Flutnet.ServiceModel.PlatformEventAttribute">
+            <summary>
+            Denotes an event that is "propagated" to Flutter. The underlying delegate type must be <see cref="T:System.EventHandler"/> or <see cref="T:System.EventHandler`1"/>.
+            </summary>
+        </member>
+        <member name="T:Flutnet.ServiceModel.PlatformOperationAttribute">
+            <summary>
+            Denotes a method that can be invoked from Flutter.
+            </summary>
+        </member>
+        <member name="P:Flutnet.ServiceModel.PlatformOperationAttribute.AndroidMainThreadRequired">
+            <summary>
+            Indicates whether the method must be invoked on the main (UI) thread
+            when the underlying platform is Android.
+            </summary>
+        </member>
+        <member name="P:Flutnet.ServiceModel.PlatformOperationAttribute.IosMainThreadRequired">
+            <summary>
+            Indicates whether the method must be invoked on the main (UI) thread
+            when the underlying platform is iOS.
+            </summary>
+        </member>
+        <member name="T:Flutnet.ServiceModel.PlatformOperationException">
+            <summary>
+            Represents errors that occur during the execution of a method decorated with [PlatformOperation]. See <see cref="T:Flutnet.ServiceModel.PlatformOperationAttribute"/>.
+            Throwing this exception will result in an exception with the same name thrown in Flutter.
+            </summary>
+        </member>
+        <member name="M:Flutnet.ServiceModel.PlatformOperationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Flutnet.ServiceModel.PlatformOperationException"/> class.
+            </summary>
+        </member>
+        <member name="M:Flutnet.ServiceModel.PlatformOperationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Flutnet.ServiceModel.PlatformOperationException"/> class with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Flutnet.ServiceModel.PlatformOperationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Flutnet.ServiceModel.PlatformOperationException"/> class with a specified error message
+            and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="inner">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
+        </member>
+        <member name="P:Flutnet.ServiceModel.PlatformOperationException.Message">
+            <summary>
+            Gets a message that describes the current exception.
+            </summary>
+        </member>
+        <member name="T:Flutnet.ServiceModel.PlatformServiceAttribute">
+            <summary>
+            Denotes a class or an interface that exposes methods that can be invoked from Flutter.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -14,7 +14,7 @@ namespace FlutnetAnimals.ServiceLibrary.Services
         {
 
             // Fake load calculation
-            await Task.Delay(100);
+            await Task.Delay(5000);
 
 
             List<Animal> animals = new List<Animal>();
@@ -104,7 +104,12 @@ namespace FlutnetAnimals.ServiceLibrary.Services
             animals.Add(tiger);
 
             // Return all the animals
-            return animals;
+            var result = new List<Animal>();
+            result.AddRange(animals);
+            result.AddRange(animals);
+            result.AddRange(animals);
+            result.AddRange(animals);
+            return result;
 
         }
 

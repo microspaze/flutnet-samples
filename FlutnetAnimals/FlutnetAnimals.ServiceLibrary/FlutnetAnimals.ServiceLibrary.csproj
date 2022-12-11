@@ -14,6 +14,17 @@
     <EmbeddedResource Include="**/*" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="bin\**" />
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="bin\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="FlutnetAnimals.ServiceLibrary.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Flutnet.ServiceModel" Version="2.0.0" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -37,6 +48,6 @@
     </CustomCommands>
   </PropertyGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(OS)' == 'Windows_NT'">
-    <Exec Command="&quot;C:\Program Files\Novagem Solutions\Flutnet\bin\flutnet.exe&quot; pack -a &quot;$(TargetPath)&quot; -n flutnet_animals_bridge -o &quot;$(SolutionDir)\Flutter&quot; --force" />
+    <Exec Command="flutnet.exe pack -a &quot;$(TargetPath)&quot; -n flutnet_animals_bridge -o &quot;$(SolutionDir)\Flutter&quot; --force" />
   </Target>
 </Project>
