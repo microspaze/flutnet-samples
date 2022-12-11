@@ -65,7 +65,7 @@ namespace FlutnetContactList.ServiceLibrary.Service
         private readonly List<Contact> _contacts = new List<Contact>();
 
         // Load a fake contact list
-        void _loadData()
+        void LoadData()
         {
             for (int i = 0; i < 100; i++)
             {
@@ -78,7 +78,7 @@ namespace FlutnetContactList.ServiceLibrary.Service
 
         public ContactService()
         {
-            _loadData();
+            LoadData();
         }
 
         [PlatformOperation]

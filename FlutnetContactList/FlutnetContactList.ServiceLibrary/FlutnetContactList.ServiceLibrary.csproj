@@ -17,10 +17,15 @@
     <EmbeddedResource Include="**/*" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Remove="bin\Debug\netstandard2.0\Flutnet.ServiceModel.dll" />
-    <EmbeddedResource Remove="bin\Debug\netstandard2.0\FlutnetContactList.ServiceLibrary.deps.json" />
-    <EmbeddedResource Remove="bin\Debug\netstandard2.0\FlutnetContactList.ServiceLibrary.dll" />
-    <EmbeddedResource Remove="bin\Debug\netstandard2.0\FlutnetContactList.ServiceLibrary.pdb" />
+    <Compile Remove="bin\**" />
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="bin\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="FlutnetContactList.ServiceLibrary.csproj" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <CustomCommands>
@@ -43,6 +48,6 @@
     </CustomCommands>
   </PropertyGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(OS)' == 'Windows_NT'">
-    <Exec Command="&quot;C:\Program Files\Novagem Solutions\Flutnet\bin\flutnet.exe&quot; pack -a &quot;$(TargetPath)&quot; -n flutnet_contact_list_bridge -o &quot;$(SolutionDir)\Flutter&quot; --force" />
+    <Exec Command="flutnet.exe pack -a &quot;$(TargetPath)&quot; -n flutnet_contact_list_bridge -o &quot;$(SolutionDir)\Flutter&quot; --force" />
   </Target>
 </Project>

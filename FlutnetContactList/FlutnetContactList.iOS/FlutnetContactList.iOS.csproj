@@ -27,7 +27,6 @@
     <MtouchDebug>true</MtouchDebug>
     <AssemblyName>FlutnetContactList.iOS</AssemblyName>
     <CodesignProvision>VS: WildCard Development</CodesignProvision>
-    
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -39,7 +38,6 @@
     <MtouchArch>x86_64</MtouchArch>
     <AssemblyName>FlutnetContactList.iOS</AssemblyName>
     <CodesignProvision>VS: WildCard Development</CodesignProvision>
-    
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,7 +49,6 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    
     <MtouchDebug>true</MtouchDebug>
     <MtouchLink>SdkOnly</MtouchLink>
     <CodesignProvision>VS: WildCard Development</CodesignProvision>
@@ -64,7 +61,6 @@
     <WarningLevel>4</WarningLevel>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARM64</MtouchArch>
-    
     <CodesignProvision>VS: WildCard Development</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
@@ -130,10 +126,18 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\xamarin-logo-black-and-white-3x-720.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\xamarin-logo-black-and-white-2x-480.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\xamarin-logo-black-and-white-1x-240.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\xamarin-logo-black-and-white-3x-720.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\xamarin-logo-black-and-white-2x-480.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\xamarin-logo-black-and-white-1x-240.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
